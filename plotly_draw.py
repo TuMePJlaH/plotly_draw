@@ -46,11 +46,14 @@ def line(y, x = None, name = None):
 def scutter(y, x = None, name = None):
     return go.Scatter(x = x, y = y, mode = 'markers', name = name)
 
+def bar(y, x = None, name = None):
+    return go.Bar(x = x, y = y, name = name)
+
 def lineFill(y, x = None, name = None):
     return go.Scatter(x = x, y = y, fill = 'tozeroy', name = name)
 
-def hist(x, nbins = None):
-    return go.Histogram(x = x, nbinsx = nbins)
+def hist(x, nbins = None, name = None):
+    return go.Histogram(x = x, nbinsx = nbins, name = name)
 
 def box(x, name = None, rotation = 'vert', color = None, boxpoints = False):
     '''
@@ -67,6 +70,13 @@ def box(x, name = None, rotation = 'vert', color = None, boxpoints = False):
     else:
         raise Exception('rotation have wrong value (%s)' % str(rotation))
 
+
+def spectrogram(spectr_arr, freq):
+    return go.Heatmap(z = spectr_arr.transpose(), 
+            #x = np.arange(spectr_arr.shape[0]),
+            x = [i for i in range(spectr_arr.shape[0])],
+            y = freq)
+
 def scutter3d(x, y, z, marker = None):
     if marker is None:
         marker = dict(
@@ -82,7 +92,7 @@ def scutter3d(x, y, z, marker = None):
         marker = marker)
     return trace
 
-def plot(data, title = None, xtitle = None, ytitle = None):
+def plot(data, title = None, xtitle = None, ytitle = None, width = None, height = None):
     fig = go.Figure()
     if type(data) == list:
         for _data in data:
@@ -94,6 +104,8 @@ def plot(data, title = None, xtitle = None, ytitle = None):
     fig['layout']['xaxis'] = { 'title' : xtitle }
     fig['layout']['yaxis'] = { 'title' : ytitle }
     fig['layout']['hovermode'] = 'x'
+    fig['layout']['width'] = width
+    fig['layout']['height'] = height
     fig.show()
 
 def plotSlider(data, labels = None, prefix = None, title = None, xtitle = None, ytitle = None):
