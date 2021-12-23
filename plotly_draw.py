@@ -129,7 +129,7 @@ def plot(data, title=None, xtitle=None, ytitle=None, width=None, height=None):
     fig['layout']['height'] = height
     fig.show()
 
-def plotSlider(data, labels=None, prefix=None, title=None, xtitle=None, ytitle=None):
+def plotSlider(data, labels=None, prefix=None, title=None, xtitle=None, ytitle=None, width=None, height=None):
     '''
     plotSlider(data, [labels], [prefix], [title], [xtitle], [ytitle]):
     '''
@@ -172,6 +172,8 @@ def plotSlider(data, labels=None, prefix=None, title=None, xtitle=None, ytitle=N
     fig['layout']['xaxis'] = {'title':xtitle}
     fig['layout']['yaxis'] = {'title':ytitle}
     fig['layout']['hovermode'] = 'x'
+    fig['layout']['width'] = width
+    fig['layout']['height'] = height
     fig.show()
 
 def plotMultipleY(data, title=None, xtitle=None, ytitle=None):
