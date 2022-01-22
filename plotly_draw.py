@@ -63,11 +63,11 @@ def pie(x, labels=None):
     '''
     return go.Pie(values=x, labels=labels)
 
-def lineFill(y, x=None, name=None, color=None):
+def lineFill(y, x=None, name=None, color=None, fill='tozeroy'):
     '''
     lineFill(y, [x], [name])
     '''
-    return go.Scatter(x=x, y=y, fill='tozeroy', name=name, marker_color=color)
+    return go.Scatter(x=x, y=y, fill=fill, name=name, marker_color=color)
 
 def hist(x, nbins=None, name=None, color=None):
     '''
