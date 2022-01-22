@@ -110,6 +110,14 @@ def scatter3d(x, y, z, marker=None):
         marker=marker)
     return trace
 
+def surface(x, y, z, opacity=1.0, colorscale=None):
+    trace = go.Surface(
+        x=x, y=y, z=z,
+        opacity=opacity,
+        colorscale=colorscale
+    )
+    return trace
+
 def plot(data, title=None, xtitle=None, ytitle=None, width=None, height=None):
     '''
     plot(data, [title], [xtitle], [ytitle], [width], [height])
